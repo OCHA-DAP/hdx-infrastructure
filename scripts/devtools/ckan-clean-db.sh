@@ -48,4 +48,5 @@ activate;
 drop_db
 recreate_db
 echo "Script completed. Make sure you start ckan now (you did stoppped it before running this script, didn't you?"
+cd $curr_dir;
 
