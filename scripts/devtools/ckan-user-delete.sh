@@ -31,6 +31,8 @@ function check_user_status {
 	fi
 	if [ $(echo $user_string | grep -c "sysadmin=True") -ne 0 ]; then
 		is_sysadmin=1
+	else
+		is_sysadmin=0
 	fi
 }
 
