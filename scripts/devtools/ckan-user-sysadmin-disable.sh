@@ -35,7 +35,7 @@ function check_user_status {
 	fi
 }
 
-function promote_user {
+function demote_user {
 	if [ $is_sysadmin -eq 0 ]; then
 		echo "user is not sysadmin. exiting...";
 	fi
@@ -51,7 +51,7 @@ function promote_user {
 activate;
 get_user_data;
 check_user_status;
-promote_user;
+demote_user;
 
 if [ $? -ne 0 ]; then
 	echo "Command failed.";

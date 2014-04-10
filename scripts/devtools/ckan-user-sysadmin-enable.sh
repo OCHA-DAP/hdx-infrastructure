@@ -38,12 +38,13 @@ function check_user_status {
 function promote_user {
 	if [ $is_sysadmin -eq 1 ]; then
 		echo "user is already sysadmin. exiting...";
+		exit 2;
 	fi
-	paster sysadmin remove $username -c $ini_file
+	paster sysadmin add $username -c $ini_file
 	check_user_status;
 	if [ $is_sysadmin -ne 1 ]; then
 		echo "i could not enable sysadmin status on that user. exiting..."
-		exit 2;
+		exit 3;
 	fi
 	echo "sysadmin enabled for "$username".";
 }
@@ -55,7 +56,7 @@ promote_user;
 
 if [ $? -ne 0 ]; then
 	echo "Command failed.";
-	exit 3;
+	exit 4;
 fi
 
 echo "Success!";
