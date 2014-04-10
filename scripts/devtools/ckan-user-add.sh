@@ -26,6 +26,7 @@ function get_user_data {
 }
 
 function check_if_user_exists {
+	user_string=$(paster user $username -c $ini_file)
 	user_exists=$(echo $user_string | grep -c "<User id=")
 	if [ $user_exists -eq 1 ]; then
 		echo "user already exists. exiting...";
