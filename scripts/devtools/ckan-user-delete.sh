@@ -40,6 +40,7 @@ function demote_user {
 	if [ $is_sysadmin -eq 0 ]; then
 		return;
 	fi
+	echo "Removing sysadmin status on user "$username
 	paster sysadmin remove $username -c $ini_file
 	check_user_status;
 	if [ $is_sysadmin -ne 0 ]; then
