@@ -15,8 +15,8 @@ select yn in "Yes" "No"; do
 done
 
 
-ckan_base_dir="/usr/lib/ckan/default"
-ini_file="/etc/ckan/default/production.ini"
+ckan_base_dir="/opt/ckan"
+ini_file="/etc/ckan/prod.ini"
 curr_dir=$(pwd)
 
 function activate {
@@ -47,6 +47,6 @@ function recreate_db {
 activate;
 drop_db
 recreate_db
-echo "Script completed. Make sure you start ckan now (you did stoppped it before running this script, didn't you?"
+echo "Script completed. Make sure you start ckan now (you did stoppped it before running this script, didn't you?)"
 cd $curr_dir;
 

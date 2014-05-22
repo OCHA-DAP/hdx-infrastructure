@@ -5,8 +5,8 @@ if [ $(id -u) -ne 0 ]; then
 	exit 1;
 fi
 
-ckan_base_dir="/usr/lib/ckan/default"
-ini_file="/etc/ckan/default/production.ini"
+ckan_base_dir="/opt/ckan"
+ini_file="/etc/ckan/prod.ini"
 curr_dir=$(pwd)
 
 username=""

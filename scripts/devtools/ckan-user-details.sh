@@ -10,9 +10,7 @@ ini_file="/etc/ckan/prod.ini"
 curr_dir=$(pwd)
 
 username=""
-password=""
-email=""
-
+user_details=""
 function activate {
 	cd $ckan_base_dir
 	. bin/activate
@@ -21,31 +19,26 @@ function activate {
 
 function get_user_data {
 	read -p "Username? " username
-	read -p "Passowrd? " password
-	read -p "Email?    " email
 }
 
 function check_if_user_exists {
 	user_string=$(paster user $username -c $ini_file)
 	user_exists=$(echo $user_string | grep -c "<User id=")
-	if [ $user_exists -eq 1 ]; then
-		echo "user already exists. exiting...";
+	if [ $user_exists -eq 0 ]; then
+		echo "user does not exist. exiting...";
 		exit 1;
 	fi
+	user_details=$user_string;
 }
 
-function create_user {
-	paster user add $username email=$email password="'"$password"'" -c $ini_file 2> /dev/null
-	if [ $? -ne 0 ]; then
-		echo "create user failed.";
-		exit 2;
-	fi
+function list_user_details {
+	echo $user_details;
 }
 
 activate;
 get_user_data;
 check_if_user_exists;
-create_user;
+list_user_details;
 
 if [ $? -ne 0 ]; then
 	echo "Command failed.";

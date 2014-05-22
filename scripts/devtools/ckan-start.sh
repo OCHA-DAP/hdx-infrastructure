@@ -5,11 +5,6 @@ if [ $(id -u) -ne 0 ]; then
 	exit 1;
 fi
 
-invoke-rc.d supervisor start > /dev/null
+ckan_app_name="ckan"
 
-if [ $? -ne 0 ]; then
-	echo "Command failed.";
-	exit 2;
-fi
-
-echo "Success!"
+supervisorctl start $ckan_app_name
