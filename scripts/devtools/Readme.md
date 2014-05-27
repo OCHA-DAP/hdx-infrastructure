@@ -23,7 +23,11 @@ Please find below a list of scripts available and what each of it does.
 
    restart the ckan web server
 
-1. **ckan-simple-deploy.sh**
+1. **ckan-deploy-nose.sh**
+
+   simple deploy, run tests
+
+1. **ckan-deploy-simple.sh**
 
    stop ckan web server, pull current used branch from repo, start ckan web server
 
@@ -35,9 +39,21 @@ Please find below a list of scripts available and what each of it does.
 
    start ckan web server
 
-1. **ckan-tests.sh**
+1. **ckan-tests-nose.sh**
 
    runs nosetests on ckan
+
+1. **ckan-sysadmin-disable.sh**
+
+   demote a sysadmin to a normal user
+   
+1. **ckan-sysadmin-enable.sh**
+
+   promote a normal user to sysadmin status
+
+1. **ckan-sysadmin-list.sh**
+
+   lists the sysadmins
 
 1. **ckan-user-add.sh**
 
@@ -54,18 +70,6 @@ Please find below a list of scripts available and what each of it does.
 1. **ckan-user-list.sh**
 
    lists the ckan users
-
-1. **ckan-user-sysadmin-disable.sh**
-
-   demote a sysadmin to a normal user
-   
-1. **ckan-user-sysadmin-enable.sh**
-
-   promote a normal user to sysadmin status
-
-1. **ckan-user-sysadmin-list.sh**
-
-   lists the sysadmins
 
 1. **cps-clean-db.sh**
 
