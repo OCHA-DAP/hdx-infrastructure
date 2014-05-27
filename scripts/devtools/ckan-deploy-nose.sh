@@ -5,6 +5,10 @@ if [ $(id -u) -ne 0 ]; then
 	exit 1;
 fi
 
+# includes the config file to define YOUR specific parameters
+# (ckan and cps location, branches etc)
+. $(which devtoolconfig.sh)
+
 function run_tests {
 	nosetests -ckan --no-skip --nologcapture --with-pylons=ckanext-hdx_theme/test.ini.sample ckanext-hdx_theme/ckanext/hdx_theme/tests/ui
 	nosetests -ckan --no-skip --nologcapture --with-pylons=ckanext-metadata_fields/test.ini.sample ckanext-metadata_fields/ckanext/metadata_fields

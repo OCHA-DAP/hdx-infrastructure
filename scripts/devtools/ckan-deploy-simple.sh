@@ -14,5 +14,6 @@ ckan-stop.sh
 cd $ckan_src_dir
 git pull origin $ckan_branch
 ckan-start.sh
+ckan-reindex.sh
 cd $curr_dir
 echo "done.:P"
