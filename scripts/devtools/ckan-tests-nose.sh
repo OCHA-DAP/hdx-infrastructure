@@ -5,19 +5,9 @@ if [ $(id -u) -ne 0 ]; then
 	exit 1;
 fi
 
-ckan_base_dir="/opt/ckan"
-ini_file="/etc/ckan/prod.ini"
-curr_dir=$(pwd)
-
-username=""
-password=""
-email=""
-
-function activate {
-	cd $ckan_base_dir
-	. bin/activate
-	cd src/ckan
-}
+# includes the config file to define YOUR specific parameters
+# (ckan and cps location, branches etc)
+. $(which devtoolconfig.sh)
 
 function run_tests {
 	nosetests -ckan --no-skip --nologcapture   --with-pylons=ckanext-hdx_theme/test.ini.sample ckanext-hdx_theme/ckanext/hdx_theme/tests/ui
