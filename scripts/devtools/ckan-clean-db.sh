@@ -14,20 +14,13 @@ select yn in "Yes" "No"; do
     esac
 done
 
-
-ckan_base_dir="/opt/ckan"
-ini_file="/etc/ckan/prod.ini"
-curr_dir=$(pwd)
-
-function activate {
-	cd $ckan_base_dir
-	. bin/activate
-	cd src/ckan
-}
+# includes the config file to define YOUR specific parameters
+# (ckan and cps location, branches etc)
+. $(which devtoolconfig.sh)
 
 function drop_db {
 	# drop db
-	paster db clean -c $ini_file > /dev/null
+	paster db clean -c $ckan_ini_file > /dev/null
 	if [ $? -ne 0 ]; then
 		echo "drop database failed.";
 		exit 2;
@@ -36,7 +29,7 @@ function drop_db {
 
 function recreate_db {
 	# recreate the empty db
-	paster db init -c $ini_file > /dev/null
+	paster db init -c $ckan_ini_file > /dev/null
 	if [ $? -ne 0 ]; then
 		echo "create database failed.";
 		exit 3;
@@ -44,9 +37,12 @@ function recreate_db {
 }
 
 # main
+ckan-stop.sh;
 activate;
-drop_db
-recreate_db
-echo "Script completed. Make sure you start ckan now (you did stoppped it before running this script, didn't you?)"
+drop_db;
+recreate_db;
+deactivate;
+ckan-start.sh;
+ckan-reindex.sh;
+echo "Script completed."
 cd $curr_dir;
-

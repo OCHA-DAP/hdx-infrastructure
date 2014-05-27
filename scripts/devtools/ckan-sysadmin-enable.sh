@@ -5,25 +5,19 @@ if [ $(id -u) -ne 0 ]; then
 	exit 1;
 fi
 
-ckan_base_dir="/opt/ckan"
-ini_file="/etc/ckan/prod.ini"
-curr_dir=$(pwd)
+# includes the config file to define YOUR specific parameters
+# (ckan and cps location, branches etc)
+. $(which devtoolconfig.sh)
 
 username=""
 is_sysadmin=0
-
-function activate {
-	cd $ckan_base_dir
-	. bin/activate
-	cd src/ckan
-}
 
 function get_user_data {
 	read -p "Username? " username
 }
 
 function check_user_status {
-	user_string=$(paster user $username -c $ini_file);
+	user_string=$(paster user $username -c $ckan_ini_file);
 	user_exists=$(echo $user_string | grep -c "<User id=");
 	user_is_sysadmin=$(echo $user_string | grep -c "sysadmin=True");
 	if [ $user_exists -eq 0 ]; then
@@ -40,7 +34,7 @@ function promote_user {
 		echo "user is already sysadmin. exiting...";
 		exit 2;
 	fi
-	paster sysadmin add $username -c $ini_file
+	paster sysadmin add $username -c $ckan_ini_file
 	check_user_status;
 	if [ $is_sysadmin -ne 1 ]; then
 		echo "i could not enable sysadmin status on that user. exiting..."

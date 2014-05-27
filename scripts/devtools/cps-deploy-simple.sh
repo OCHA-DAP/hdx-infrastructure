@@ -1,12 +1,8 @@
 #!/bin/bash
 
-BASEDIR="/opt/deploy/sources"
-REPODIR=$BASEDIR"/DAP-System"
-SRCDIR=$REPODIR"/HDX-System"
-REPOURL="https://github.com/OCHA-DAP/HDX-CKAN_Setup.git"
-CURPWD=$(pwd)
-TIMESTAMP=$(date +%Y%m%d-%H%M%S)
-WEBAPPDIR="/opt/www/tomcat/tomcat/webapps"
+# includes the config file to define YOUR specific parameters
+# (ckan and cps location, branches etc)
+. $(which devtoolconfig.sh)
 
 function repo_from_scratch {
     mkdir -p $BASEDIR
@@ -28,14 +24,14 @@ function mvn_make {
 function deploy_cps {
     cps-stop.sh
     backup old war file
-    cp -a $WEBAPPDIR/hdx.war $BASEDIR/hdx.$TIMESTAMP.war
-    if [ -d $WEBAPPDIR/hdx ]; then
-        rm -rf $WEBAPPDIR/hdx
+    cp -a $webapp_dir/hdx.war $BASEDIR/hdx.$TIMESTAMP.war
+    if [ -d $webapp_dir/hdx ]; then
+        rm -rf $webapp_dir/hdx
     fi
-    if [ -f $WEBAPPDIR/hdx.war ]; then
-        rm -f $WEBAPPDIR/hdx.war
+    if [ -f $webapp_dir/hdx.war ]; then
+        rm -f $webapp_dir/hdx.war
     fi
-    cp -a $SRCDIR/target/hdx.war $WEBAPPDIR/
+    cp -a $SRCDIR/target/hdx.war $webapp_dir/
     cps-start.sh
 }
 
@@ -59,7 +55,7 @@ sleep 5
 
 deploy_cps
 
-cd  $CURPWD
+cd  $curr_dir
 ENDTIME=$(date +%H:%M:%S)
 echo -en "\nstarted at:\t"$STARTTIME
 echo -en "\nfinished at:\t"$ENDTIME"\n\n"

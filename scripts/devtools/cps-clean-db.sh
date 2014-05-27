@@ -14,11 +14,9 @@ select yn in "Yes" "No"; do
     esac
 done
 
-cps_db="hdx"
-cps_user="hdxuser"
-tmp_dir="/var/tmp/cps-clean-db"
-curr_dir=$(pwd)
-
+# includes the config file to define YOUR specific parameters
+# (ckan and cps location, branches etc)
+. $(which devtoolconfig.sh)
 
 function drop_db {
 	# drop db
@@ -66,9 +64,11 @@ function make_db_layout {
 }
 
 # main
-drop_db
-recreate_db
-clone_repo
-make_db_layout
-echo "Script completed. Make sure you start cps now (you did stoppped it before running this script, didn't you?"
+cps-stop.sh
+drop_db;
+recreate_db;
+clone_repo;
+make_db_layout;
+cps-start.;
+echo "Script completed. CPS has been started."
 

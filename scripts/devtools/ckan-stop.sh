@@ -5,6 +5,8 @@ if [ $(id -u) -ne 0 ]; then
 	exit 1;
 fi
 
-ckan_app_name="ckan"
+# includes the config file to define YOUR specific parameters
+# (ckan and cps location, branches etc)
+. $(which devtoolconfig.sh)
 
 supervisorctl stop $ckan_app_name

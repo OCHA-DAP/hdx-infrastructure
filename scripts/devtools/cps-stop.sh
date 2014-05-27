@@ -5,9 +5,11 @@ if [ $(id -u) -ne 0 ]; then
 	exit 1;
 fi
 
-cps_location="/opt/www/tomcat";
+# includes the config file to define YOUR specific parameters
+# (ckan and cps location, branches etc)
+. $(which devtoolconfig.sh)
 
-sudo -u tomcat $cps_location/tomcat/control.sh stop > /dev/null
+sudo -u tomcat $cps_dir/tomcat/control.sh stop > /dev/null
 
 if [ $? -ne 0 ]; then
 	echo "Command failed.";

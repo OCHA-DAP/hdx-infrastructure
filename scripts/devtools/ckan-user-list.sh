@@ -5,9 +5,9 @@ if [ $(id -u) -ne 0 ]; then
 	exit 1;
 fi
 
-ckan_base_dir="/opt/ckan"
-ini_file="/etc/ckan/prod.ini"
-curr_dir=$(pwd)
+# includes the config file to define YOUR specific parameters
+# (ckan and cps location, branches etc)
+. $(which devtoolconfig.sh)
 
 username=""
 password=""
@@ -20,7 +20,7 @@ function activate {
 }
 
 function list_users {
-	paster user list -c $ini_file 2> /dev/null
+	paster user list -c $ckan_ini_file 2> /dev/null
 	if [ $? -ne 0 ]; then
 		echo "create user failed.";
 		exit 2;
@@ -29,6 +29,8 @@ function list_users {
 
 activate;
 list_users;
+deactivate;
+cd $curr_dir;
 
 if [ $? -ne 0 ]; then
 	echo "Command failed.";
@@ -36,4 +38,3 @@ if [ $? -ne 0 ]; then
 fi
 
 echo "Success!";
-cd $curr_dir;

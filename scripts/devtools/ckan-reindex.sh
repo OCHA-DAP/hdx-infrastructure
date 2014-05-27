@@ -5,24 +5,19 @@ if [ $(id -u) -ne 0 ]; then
 	exit 1;
 fi
 
-ckan_base_dir="/opt/ckan"
-ini_file="/etc/ckan/prod.ini"
-curr_dir=$(pwd)
-
-function activate {
-	cd $ckan_base_dir
-	. bin/activate
-	cd src/ckan
-}
+# includes the config file to define YOUR specific parameters
+# (ckan and cps location, branches etc)
+. $(which devtoolconfig.sh)
 
 function reindex {
 	# drop db
-	paster search-index rebuild -c $ini_file > /dev/null
+	paster search-index rebuild -c $ckan_ini_file > /dev/null
 }
 
 # main
 activate;
 reindex;
+deactivate;
 echo "Done."
 cd $curr_dir;
 
