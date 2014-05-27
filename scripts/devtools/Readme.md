@@ -26,6 +26,8 @@ Please find below a list of scripts available and what each of it does.
 1. **ckan-deploy-nose.sh**
 
    simple deploy, run tests
+   
+   Note: intentionally, this script is **not** installed on production servers
 
 1. **ckan-deploy-simple.sh**
 
@@ -42,6 +44,8 @@ Please find below a list of scripts available and what each of it does.
 1. **ckan-tests-nose.sh**
 
    runs nosetests on ckan
+   
+   Note: intentionally, this script is **not** installed on production servers
 
 1. **ckan-sysadmin-disable.sh**
 
