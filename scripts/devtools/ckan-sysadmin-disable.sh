@@ -5,9 +5,11 @@ if [ $(id -u) -ne 0 ]; then
 	exit 1;
 fi
 
-ckan_base_dir="/opt/ckan"
-ini_file="/etc/ckan/prod.ini"
-curr_dir=$(pwd)
+# ckan_base_dir="/opt/ckan"
+# ini_file="/etc/ckan/prod.ini"
+# curr_dir=$(pwd)
+
+. $(which devtoolconfig.sh)
 
 username=""
 is_sysadmin=1
