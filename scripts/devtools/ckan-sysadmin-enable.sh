@@ -53,6 +53,8 @@ activate;
 get_user_data;
 check_user_status;
 promote_user;
+deactivate;
+cd $curr_dir;
 
 if [ $? -ne 0 ]; then
 	echo "Command failed.";
@@ -60,4 +62,3 @@ if [ $? -ne 0 ]; then
 fi
 
 echo "Success!";
-cd $curr_dir;

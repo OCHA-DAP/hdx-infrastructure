@@ -21,6 +21,8 @@ function list_sysadmins {
 
 activate;
 list_sysadmins;
+deactivate;
+cd $curr_dir;
 
 if [ $? -ne 0 ]; then
 	echo "Command failed.";
@@ -28,4 +30,3 @@ if [ $? -ne 0 ]; then
 fi
 
 echo "Success!";
-cd $curr_dir;

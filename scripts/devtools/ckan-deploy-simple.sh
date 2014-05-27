@@ -24,7 +24,7 @@ function run_tests {
 	nosetests -ckan --no-skip --nologcapture --with-pylons=ckanext-metadata_fields/test.ini.sample ckanext-metadata_fields/ckanext/metadata_fields
 }
 
-ckan-deploy-simple.sh
+ckan-simple-deploy.sh
 activate;
 run_tests;
 
