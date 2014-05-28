@@ -10,8 +10,8 @@ fi
 . $(which devtoolconfig.sh)
 
 function run_tests {
-	nosetests -ckan --no-skip --nologcapture   --with-pylons=ckanext-hdx_theme/test.ini.sample ckanext-hdx_theme/ckanext/hdx_theme/tests/ui
-	nosetests -ckan --no-skip --nologcapture --with-pylons=ckanext-metadata_fields/test.ini.sample ckanext-metadata_fields/ckanext/metadata_fields
+	nosetests -ckan --with-xunit --xunit-file=ckanext-metadata_fields/ckanext/metadata_fields/tests/nose_results.xml --nologcapture --with-pylons=ckanext-metadata_fields/test.ini.sample ckanext-metadata_fields/ckanext/metadata_fields
+	nosetests -ckan --with-xunit --xunit-file=ckanext-hdx_theme/ckanext/hdx_theme/tests/nose_results.xml --nologcapture   --with-pylons=ckanext-hdx_theme/test.ini.sample ckanext-hdx_theme/ckanext/hdx_theme
 }
 
 activate;
