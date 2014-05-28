@@ -17,10 +17,13 @@ curr_dir=$(pwd)
 ckan_app_name="ckan"
 
 # needed for get the snapshot
-ckan_backup_server=""
-ckan_backup_user=""
-ckan_backup_dir=""
+ckan_backup_server="backup.ckan.local"
+ckan_backup_user="backupuser"
+ckan_backup_dir="/backup"
+ckan_backup_prefix="prod.ckan.db."
 ckan_tmp_dir="/tmp/ckan-db-restore"
+ckan_sql_user="ckanuser"
+ckan_sql_db="ckandb"
 
 # needed by paster
 function activate {
