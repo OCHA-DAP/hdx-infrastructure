@@ -23,19 +23,20 @@ function get_last_backup_name {
 
 function get_backup {
 	mkdir -p $ckan_tmp_dir
-	echo "Getting the last backup..."
+	echo -en "Getting the last backup... "
 	rsync -av --progress -e "ssh -o PasswordAuthentication=no" $ckan_backup_user@$ckan_backup_server:$ckan_backup_dir/$ckan_db_backup $ckan_tmp_dir/
 	if [ $? -ne 0 ]; then
-		echo "get last backup name failed.";
+		echo -en "failed. \n";
 		exit 2;
 	fi
 }
 
 function drop_db {
+	echo -en "Droping all tables from $ckan_sql_db... "
 	# drop db
 	paster db clean -c $ckan_ini_file > /dev/null
 	if [ $? -ne 0 ]; then
-		echo "drop database failed.";
+		echo -en "failed.\n";
 		exit 3;
 	fi
 }
