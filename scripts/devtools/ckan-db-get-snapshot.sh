@@ -12,11 +12,13 @@ fi
 ckan_db_backup="NON-EXISTENT-BACKUP"
 
 function get_last_backup_name {
+	echo -en "Getting the last backup name: "
  	ckan_db_backup=$(rsync -e "ssh -o PasswordAuthentication=no" --list-only $ckan_backup_user@$ckan_backup_server:$ckan_backup_dir/$ckan_backup_prefix* | tail -n 1 | awk '{ print $5 }')
 	if [ $? -ne 0 ]; then
-		echo "get last backup name failed.";
+		echo -en "failed.\n";
 		exit 1;
 	fi
+	echo -en "$ckan_db_backup\n"
 }
 
 function get_backup {
@@ -39,6 +41,7 @@ function drop_db {
 
 function recreate_db_from_backup {
 	# recreate the empty db
+	echo "Restoring db from the prod backup. Only errors will be shown."
 	psql -U $ckan_sql_user $ckan_sql_db -f $ckan_tmp_dir/$ckan_db_backup > /dev/null
 	if [ $? -ne 0 ]; then
 		echo "create database failed.";
