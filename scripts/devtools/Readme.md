@@ -85,7 +85,7 @@ Please find below a list of scripts available and what each of it does.
 
    remove all content from cps db
    
-   Note: intentionally, this script is **not** installed on production servers|
+   Note: intentionally, this script is **not** installed on production servers
 
 1. **cps-restart.sh**
 
