@@ -23,7 +23,8 @@ function get_last_backup_name {
 
 function get_backup {
 	mkdir -p $ckan_tmp_dir
-	rsync -av --stats --progress -e "ssh -o PasswordAuthentication=no" $ckan_backup_user@$ckan_backup_server:$ckan_backup_dir/$ckan_db_backup $ckan_tmp_dir/
+	echo "Getting the last backup..."
+	rsync -av --progress -e "ssh -o PasswordAuthentication=no" $ckan_backup_user@$ckan_backup_server:$ckan_backup_dir/$ckan_db_backup $ckan_tmp_dir/
 	if [ $? -ne 0 ]; then
 		echo "get last backup name failed.";
 		exit 2;
