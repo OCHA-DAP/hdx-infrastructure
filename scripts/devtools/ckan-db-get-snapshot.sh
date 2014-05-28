@@ -52,9 +52,9 @@ function recreate_db_from_backup {
 }
 
 # main
-ckan-stop.sh;
 get_last_backup_name;
 get_backup;
+ckan-stop.sh;
 activate;
 drop_db;
 recreate_db_from_backup;
