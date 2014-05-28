@@ -16,6 +16,12 @@ curr_dir=$(pwd)
 # needed to stop/start/restart the supervisor app
 ckan_app_name="ckan"
 
+# needed for get the snapshot
+ckan_backup_server=""
+ckan_backup_user=""
+ckan_backup_dir=""
+ckan_tmp_dir="/tmp/ckan-db-restore"
+
 # needed by paster
 function activate {
 	cd $ckan_base_dir
