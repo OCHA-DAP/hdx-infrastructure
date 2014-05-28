@@ -9,9 +9,15 @@ For example, type **cps** then \[tab\]\[tab\] will show you what scripts start w
 
 Please find below a list of scripts available and what each of it does.
 
-1. **ckan-clean-db.sh**
+1. **ckan-db-clean.sh**
 
    empty and reinitialize the ckan database
+   
+   Note: intentionally, this script is **not** installed on production servers
+
+1. **ckan-db-get-snapshot.sh**
+
+   fetch latest full backup of ckan db from backup server, stops ckan, empty the ckan database, restores the backup, starts ckan, reindex ckan
    
    Note: intentionally, this script is **not** installed on production servers
 
@@ -25,13 +31,13 @@ Please find below a list of scripts available and what each of it does.
 
 1. **ckan-deploy-nose.sh**
 
-   simple deploy, run tests
+   simple deploy, run tests, 
    
    Note: intentionally, this script is **not** installed on production servers
 
 1. **ckan-deploy-simple.sh**
 
-   stop ckan web server, pull current used branch from repo, start ckan web server
+   stop ckan web server, pull current used branch from repo, start ckan web server, reindex ckan
 
 1. **ckan-start.sh**
 
