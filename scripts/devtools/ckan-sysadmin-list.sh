@@ -30,10 +30,11 @@ function pretty_list_user_details {
 
 activate;
 if [ $# -eq 1 ]; then
-	if [ $1 -eq "-p" ]; then
+	if [ "$1" == "-p" ]; then
 		pretty_list_sysadmins;
 	else
 		echo "use -p to display the pretty list :)";
+		exit 1;
 	fi
 else
 	list_sysadmins;
