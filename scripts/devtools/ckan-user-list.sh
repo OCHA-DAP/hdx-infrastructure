@@ -18,8 +18,8 @@ function list_users {
 }
 
 function pretty_list_users {
-	user_list=$(paster user -c $ckan_ini_file | grep -E "^name=");
-	for user in $(echo $user_list | sed -e 's/^User name=//; s/ display=.*//'); do
+	user_list=$(paster user -c $ckan_ini_file | grep -E "^name=" | sed -e 's/^name=//; s/ display=.*//');
+	for user in $user_list; do
 		pretty_list_user_details $user;
 	done
 }
