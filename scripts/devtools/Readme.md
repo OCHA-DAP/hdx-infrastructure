@@ -64,6 +64,8 @@ Please find below a list of scripts available and what each of it does.
 1. **ckan-sysadmin-list.sh**
 
    lists the sysadmins
+   
+   Note: using -p as argument gives you a pretty list with usernames, email and full name
 
 1. **ckan-user-add.sh**
 
@@ -80,6 +82,8 @@ Please find below a list of scripts available and what each of it does.
 1. **ckan-user-list.sh**
 
    lists the ckan users
+
+   Note: using -p as argument gives you a pretty list with usernames, email and full name
 
 1. **cps-clean-db.sh**
 
