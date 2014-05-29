@@ -25,12 +25,16 @@ function pretty_list_user_details {
 	user_username=$(echo $user_string | sed -e 's/.* name=//; s/ openid=.*//');
 	user_fullname=$(echo $user_string | sed -e 's/.* fullname=//; s/ email=.*//');
 	user_email=$(echo $user_string | sed -e 's/.* email=//; s/ apikey=.*//');
-	echo "$user_username,user_email,user_fullname"
+	echo "$user_username,$user_email,$user_fullname"
 }
 
 activate;
-if [ $1 -eq "-p" ]; then
-	pretty_list_sysadmins;
+if [ $# -eq 1 ]; then
+	if [ $1 -eq "-p" ]; then
+		pretty_list_sysadmins;
+	else
+		echo "use -p to display the pretty list :)";
+	fi
 else
 	list_sysadmins;
 fi
