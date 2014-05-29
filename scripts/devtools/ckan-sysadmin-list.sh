@@ -14,7 +14,7 @@ function list_sysadmins {
 }
 
 function pretty_list_sysadmins {
-	user_list=$(paster sysadmin list -c $ckan_ini_file | grep -E "^User name=" | sed -e 's/^User name=//; s/ display=.*//');
+	user_list=$(paster sysadmin list -c $ckan_ini_file | grep -E "^User name=" | sed -e 's/^User name=//; s/ id=.*//');
 	for user in $user_list; do
 		pretty_list_user_details $user;
 	done
