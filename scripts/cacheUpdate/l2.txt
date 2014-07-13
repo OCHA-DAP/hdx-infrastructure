@@ -1,0 +1,2 @@
+ http://manage.hdx.rwlabs.org/hdx/api/exporter/indicator/xlsx/PVX040/source/acled/fromYear/1950/toYear/2014/language/en/PVX040_Baseline.xlsx
+ http://manage.hdx.rwlabs.org/hdx/api/exporter/indicator/csv/PVX040/source/acled/fromYear/1950/toYear/2014/language/en/PVX040_Baseline.csv
