@@ -2,7 +2,7 @@
 
 # needed for paster and deployment
 ckan_base_dir="/opt/ckan"
-ckan_src_dir=$ckan_base_dir"/src/ckan"
+ckan_src_dir=$ckan_base_dir"/hdx-ckan"
 
 # for deployment
 ckan_branch="prod"
