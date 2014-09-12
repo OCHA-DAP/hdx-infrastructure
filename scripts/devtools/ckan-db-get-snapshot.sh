@@ -31,36 +31,14 @@ function get_backup {
 	fi
 }
 
-function drop_db {
-	echo -en "Droping all tables from $ckan_sql_db... "
-	# drop db
-	paster db clean -c $ckan_ini_file > /dev/null
-	if [ $? -ne 0 ]; then
-		echo -en "failed.\n";
-		exit 3;
-	fi
-}
-
-function recreate_db_from_backup {
-	# recreate the empty db
-	echo "Restoring db from the prod backup. Only errors will be shown."
-	psql -U $ckan_sql_user $ckan_sql_db -f $ckan_tmp_dir/$ckan_db_backup > /dev/null
-	if [ $? -ne 0 ]; then
-		echo "create database failed.";
-		exit 4;
-	fi
-}
-
 # main
 get_last_backup_name;
 get_backup;
-ckan-stop.sh;
-activate;
-drop_db;
-recreate_db_from_backup;
-deactivate;
-ckan-start.sh;
-ckan-reindex.sh;
-rm -rf $ckan_tmp_dir;
-echo "Script completed."
+
+if [[ $_ != $0 ]]; then
+	echo "Script completed."
+	echo "The backup file is: $ckan_tmp_dir/$ckan_db_backup."
+	echo "Please do not forget to remove the file after you got it."
+	echo "Thank you."
+fi
 cd $curr_dir;

@@ -15,11 +15,21 @@ Please find below a list of scripts available and what each of it does.
    
    Note: intentionally, this script is **not** installed on production servers
 
-1. **ckan-db-get-snapshot.sh**
+1. **ckan-db-get-snapshot.sh** *MODIFIED*
+
+   fetch latest full backup of ckan db from backup server
+   
+   Note: intentionally, this script is **not** installed on production servers
+
+   Note: modified, losting the db operations; these are now managed with **ckan-db-overwrite-from-snapshot.sh**
+
+1. **ckan-db-overwrite-from-snapshot.sh** *NEW*
 
    fetch latest full backup of ckan db from backup server, stops ckan, empty the ckan database, restores the backup, starts ckan, reindex ckan
    
    Note: intentionally, this script is **not** installed on production servers
+
+   Note: this script replaces the functionality lost by **ckan-db-get-snapshot.sh**
 
 1. **ckan-reindex.sh**
 
