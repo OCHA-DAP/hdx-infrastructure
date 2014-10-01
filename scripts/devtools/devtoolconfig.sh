@@ -16,7 +16,7 @@ curr_dir=$(pwd)
 # needed to stop/start/restart the supervisor app
 ckan_app_name="ckan"
 
-# needed for get the snapshot
+# needed to get the snapshot
 ckan_backup_server="backup.ckan.local"
 ckan_backup_user="backupuser"
 ckan_backup_dir="/backup"
@@ -37,6 +37,15 @@ function activate {
 }
 
 #### needed for cps
+
+# needed to get the snapshot
+cps_backup_server="backup.cps.local"
+cps_backup_user="backupuser"
+cps_backup_dir="/backup"
+cps_backup_prefix="prod.cps.db."
+cps_tmp_dir="/tmp/cps-db-restore"
+cps_sql_user="cpsuser"
+cps_sql_db="cpsdb"
 
 # clean db
 cps_db="hdx"

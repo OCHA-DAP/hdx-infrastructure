@@ -19,9 +19,9 @@ Please find below a list of scripts available and what each of it does.
 
    fetch latest full backup of ckan db from backup server
    
-   Note: intentionally, this script is **not** installed on production servers
-
    Note: modified, losting the db operations; these are now managed with **ckan-db-overwrite-from-snapshot.sh**
+
+   Note: due to changes in the functionality of this script, it is now **installed** on production servers
 
 1. **ckan-db-overwrite-from-snapshot.sh** *NEW*
 
@@ -95,9 +95,19 @@ Please find below a list of scripts available and what each of it does.
 
    Note: using -p as argument gives you a pretty list with usernames, email and full name
 
-1. **cps-clean-db.sh**
+1. **cps-clean-db.sh** *REMOVED*
 
    remove all content from cps db
+   
+   Note: intentionally, this script is **not** installed on production servers
+
+1. **cps-db-get-snapshot.sh** *NEW*
+
+   fetch latest full backup of cps db from backup server
+   
+1. **cps-db-overwrite-from-snapshot.sh** *NEW*
+
+   fetch latest full backup of cps db from backup server, stops tomcat, empty the cps database, restores the backup, starts tomcat
    
    Note: intentionally, this script is **not** installed on production servers
 
@@ -105,7 +115,11 @@ Please find below a list of scripts available and what each of it does.
 
    restarts tomcat
 
-1. **cps-simple-deploy.sh**
+1. **cps-simple-deploy.sh** *RENAMED*
+
+   pull master branch, compile it, stop tomcat, remove old war file and the corresponding folder, copy over the new war file, start tomcat
+
+1. **cps-deploy-simple.sh** *NEW*
 
    pull master branch, compile it, stop tomcat, remove old war file and the corresponding folder, copy over the new war file, start tomcat
    
