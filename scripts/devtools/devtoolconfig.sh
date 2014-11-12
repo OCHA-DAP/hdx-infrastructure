@@ -21,10 +21,11 @@ ckan_backup_server="backup.ckan.local"
 ckan_backup_user="backupuser"
 ckan_backup_dir="/backup"
 ckan_backup_prefix="prod.ckan.db."
+ckan_backup_datastore_prefix="prod.ckan.datastoredb."
 ckan_tmp_dir="/tmp/ckan-db-restore"
 ckan_sql_user="ckanuser"
 ckan_sql_db="ckandb"
-
+ckan_sql_db_datastore="datastoredb"
 # needed for tests
 ckan_TEST_sql_db="ckan_test"
 ckan_TEST_sql_db_datastore="datastore_test"
