@@ -14,7 +14,7 @@ fi
 function drop_db {
 	echo -en "Droping all tables from $ckan_sql_db... "
 	# drop db
-	#paster db clean -c $ckan_ini_file > /dev/null
+	paster db clean -c $ckan_ini_file > /dev/null
 	if [ $? -ne 0 ]; then
 		echo -en "failed.\n";
 		exit 3;
