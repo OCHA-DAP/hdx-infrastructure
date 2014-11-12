@@ -24,10 +24,7 @@ function drop_db {
 function recreate_db_from_backup {
 	# recreate the empty db
 	echo "Restoring db from the prod backup. Only errors will be shown."
-	sudo -u postgres createdb -O $ckan_sql_user $ckan_sql_db_datastore -E utf-8
-	gunzip $ckan_tmp_dir/$ckan_db_backup
-	ckan_db_backup=$(echo $ckan_db_backup | sed -e 's/\.gz$//')
-	#psql -U $ckan_sql_user $ckan_sql_db -f $ckan_tmp_dir/$ckan_db_backup > /dev/null
+	psql -U $ckan_sql_user $ckan_sql_db -f $ckan_tmp_dir/$ckan_db_backup > /dev/null
 	if [ $? -ne 0 ]; then
 		echo "create database failed.";
 		exit 4;
